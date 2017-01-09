@@ -14,7 +14,6 @@ uniform mat4 projection;
 
 in vec3 position;
 in vec3 normal;
-// TODO: color
 
 out vec3 Normal;
 out vec3 FragmentPosition;

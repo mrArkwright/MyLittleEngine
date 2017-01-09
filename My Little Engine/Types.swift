@@ -8,8 +8,8 @@
 
 import OpenGL
 
-typealias Vertex = (GLfloat, GLfloat, GLfloat)
-typealias Normal = (GLfloat, GLfloat, GLfloat)
+typealias Vertex = (x: GLfloat, y: GLfloat, z: GLfloat)
+typealias Normal = (x: GLfloat, y: GLfloat, z: GLfloat)
 typealias Vertices = [Vertex]
 typealias NVertices = [(Vertex, Normal)]
 

@@ -42,8 +42,8 @@ class Scene {
 		glBindVertexArray(vertexArrayObject)
 	}
 	
-	func setClearColor(r: GLfloat, g: GLfloat, b: GLfloat, a: GLfloat) { // TODO: use NSColor?
-		glClearColor(r, g, b, a)
+	func setClearColor(color: Color, alpha: GLfloat) {
+		glClearColor(color.red, color.green, color.blue, alpha)
 	}
 	
 	func clear() {

@@ -9,7 +9,7 @@
 import OpenGL
 
 // TODO: Phong lighting
-// TODO: Colors, Textures, Light Color
+// TODO: Textures, Light Color
 class LightingShaderProgram: ShaderProgram {
 	
 	var lightPositionUniform: GLint!
@@ -28,12 +28,12 @@ class LightingShaderProgram: ShaderProgram {
 	
 	func setLightPosition(_ position: Vertex) {
 		glUseProgram(shaderProgram)
-		glUniform3f(lightPositionUniform, position.0, position.1, position.2)
+		glUniform3f(lightPositionUniform, position.x, position.y, position.z)
 	}
 	
 //	func setViewPosition(_ position: Vertex) {
 //		glUseProgram(shaderProgram)
-//		glUniform3f(viewPositionUniform, position.0, position.1, position.2)
+//		glUniform3f(viewPositionUniform, position.x, position.y, position.z)
 //	}
 	
 	func draw(model: Model, modelMatrix: Matrix, color: Color) {

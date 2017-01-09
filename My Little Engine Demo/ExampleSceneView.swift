@@ -32,7 +32,7 @@ class ExampleSceneView: EngineOpenGLView {
 		let spherePath = Bundle.main.path(forResource: "sphere", ofType: "obj", inDirectory: "Models")!
 		sphere = Model(wavefrontFile: spherePath)
 		
-		scene.setClearColor(r: 1.0, g: 0.41, b: 0.71, a: 0.1)
+		scene.setClearColor(color: (1.0, 0.41, 0.71), alpha: 0.1)
 	}
 	
 	override func drawScene(time: Float) {
@@ -90,7 +90,7 @@ class ExampleSceneView: EngineOpenGLView {
 		let viewWidth = GLfloat(self.frame.size.width)
 		let viewHeight = GLfloat(self.frame.size.height)
 		
-		scene.setClearColor(r: 0.0, g: 0.0, b: 0.0, a: 0.0)
+		scene.setClearColor(color: (0.0, 0.0, 0.0), alpha: 0.0)
 		
 		// ---------------- projection ----------------
 		let projectionMatrix = Matrix(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
