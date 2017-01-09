@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let isTransparent = sender.state == 0 ? false : true
 		
 		window.isOpaque = !isTransparent
-		//window.hasShadow = !isTransperent
+		//window.hasShadow = !isTransparent
 		
 		openGLView.setBackgroundTransparency(isTransparent)
 	}

@@ -32,7 +32,7 @@ class ExampleSceneView: EngineOpenGLView {
 		let spherePath = Bundle.main.path(forResource: "sphere", ofType: "obj", inDirectory: "Models")!
 		sphere = Model(wavefrontFile: spherePath)
 		
-		scene.setClearColor(r: 1.0, g: 0.41, b: 0.71, a: 1.0)
+		scene.setClearColor(r: 1.0, g: 0.41, b: 0.71, a: 0.1)
 	}
 	
 	override func drawScene(time: Float) {
