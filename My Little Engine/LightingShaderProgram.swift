@@ -3,7 +3,7 @@
 //  My Little Engine
 //
 //  Created by Jannik Theiß on 01.01.17.
-//  Copyright © 2017 Exceptional Eye Staring. All rights reserved.
+//
 //
 
 import OpenGL
