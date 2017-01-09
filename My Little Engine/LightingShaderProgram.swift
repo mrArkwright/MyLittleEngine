@@ -8,12 +8,11 @@
 
 import OpenGL
 
-// TODO: Phong lighting
 // TODO: Textures, Light Color
 class LightingShaderProgram: ShaderProgram {
 	
 	var lightPositionUniform: GLint!
-//	var viewPositionUniform: GLint!
+	var viewPositionUniform: GLint!
 	
 	var normalAttribute: GLuint!
 	
@@ -21,7 +20,7 @@ class LightingShaderProgram: ShaderProgram {
 		super.init(pathBase: pathBase)
 		
 		lightPositionUniform = GLint(glGetUniformLocation(shaderProgram, "lightPosition"))
-//		viewPositionUniform = GLint(glGetUniformLocation(shaderProgram, "viewPosition"))
+		viewPositionUniform = GLint(glGetUniformLocation(shaderProgram, "viewPosition"))
 		
 		normalAttribute = GLuint(glGetAttribLocation(shaderProgram, "normal"))
 	}
@@ -31,10 +30,10 @@ class LightingShaderProgram: ShaderProgram {
 		glUniform3f(lightPositionUniform, position.x, position.y, position.z)
 	}
 	
-//	func setViewPosition(_ position: Vertex) {
-//		glUseProgram(shaderProgram)
-//		glUniform3f(viewPositionUniform, position.x, position.y, position.z)
-//	}
+	func setViewPosition(_ position: Vertex) {
+		glUseProgram(shaderProgram)
+		glUniform3f(viewPositionUniform, position.x, position.y, position.z)
+	}
 	
 	func draw(model: Model, modelMatrix: Matrix, color: Color) {
 		

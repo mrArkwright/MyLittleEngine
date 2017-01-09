@@ -65,9 +65,9 @@ class Scene {
 		lightPosition = position
 	}
 	
-//	func setViewPosition(_ position: Vertex) {
-//		lightingShader.setViewPosition(position)
-//	}
+	func setViewPosition(_ position: Vertex) {
+		lightingShader.setViewPosition(position)
+	}
 	
 	func drawPoints(vertices: Vertices, modelMatrix: Matrix, size: GLfloat, color: Color) {
 		primitiveShader.drawPoints(vertices: vertices, modelMatrix: modelMatrix, color: color, size: size)

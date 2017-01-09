@@ -10,9 +10,8 @@
 
 uniform vec3 lightPosition;
 uniform vec3 vertexColor;
+uniform vec3 viewPosition;
 
-
-//in vec3 viewPosition;
 in vec3 Normal;
 in vec3 FragmentPosition;
 
@@ -29,12 +28,12 @@ void main(void) {
 	float diff = max(dot(norm, lightDir), 0.0);
 	vec3 diffuse = diff * lightColor;
 	
-//	float specularStrength = 0.5;
-//	vec3 viewDir = normalize(viewPosition - FragmentPosition);
-//	vec3 reflectDir = reflect(-lightDir, norm);
-//	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-//	vec3 specular = specularStrength * spec * lightColor;
+	float specularStrength = 0.5;
+	vec3 viewDir = normalize(viewPosition - FragmentPosition);
+	vec3 reflectDir = reflect(-lightDir, norm);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	vec3 specular = specularStrength * spec * lightColor;
 	
-	vec3 result = (ambient + diffuse) * vertexColor;
+	vec3 result = (ambient + diffuse + specular) * vertexColor;
 	color = vec4(result, 1.0);
 }

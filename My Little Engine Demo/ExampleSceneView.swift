@@ -55,11 +55,12 @@ class ExampleSceneView: EngineOpenGLView {
 		viewMatrix.rotateX(angle: rotationX)
 		viewMatrix.translate(x: 0.0, y: 0.0, z: zoom)
 		scene.setViewMatrix(viewMatrix)
-		//scene.setViewPosition(())
+		scene.setViewPosition((zoom*sin(rotationY)*cos(rotationX), -zoom*sin(rotationX), -zoom*cos(rotationY)*cos(rotationX)))
 		
 		//Swift.print(viewMatrix)
 		
 		// ---------------- lighting ----------------
+		//scene.setLightPosition((10.0*sin(time*0.4), 5.0, 10.0*cos(time*0.4)))
 		scene.setLightPosition((5.0, 5.0, 5.0))
 		
 		// ---------------- models ----------------
@@ -77,12 +78,12 @@ class ExampleSceneView: EngineOpenGLView {
 		modelMatrix.rotateX(angle: time*0.16)
 		modelMatrix.rotateY(angle: -time*0.8 + 2.0 * GLfloat.pi / 16)
 		modelMatrix.translate(x: 5.0, y: 0.0, z: 0.0)
-		scene.draw(model: cube, modelMatrix: modelMatrix, color: (0.3, 0.3, 0.3))
+		scene.draw(model: sphere, modelMatrix: modelMatrix, color: (0.3, 0.3, 0.3))
 		
-//		modelMatrix = Matrix()
-//		modelMatrix.scale(factor: 0.5)
-//		modelMatrix.rotateY(angle: -time*0.8 + 2.0 * GLfloat.pi / 16)
-//		scene.draw(model: teapot, modelMatrix: modelMatrix)
+		modelMatrix = Matrix()
+		modelMatrix.scale(factor: 0.5)
+		modelMatrix.rotateY(angle: -time*0.8 + 2.0 * GLfloat.pi / 16)
+		scene.draw(model: teapot, modelMatrix: modelMatrix, color: (0.333, 0.569, 0.835))
 	}
 	
 	func iconScene() {
@@ -100,6 +101,7 @@ class ExampleSceneView: EngineOpenGLView {
 		let viewMatrix = Matrix()
 		viewMatrix.translate(x: 0.0, y: 0.0, z: -5.0)
 		scene.setViewMatrix(viewMatrix)
+		scene.setViewPosition((0.0, 0.0, 5.0))
 		
 		// ---------------- lighting ----------------
 		scene.setLightPosition((5.0, 5.0, 5.0))
