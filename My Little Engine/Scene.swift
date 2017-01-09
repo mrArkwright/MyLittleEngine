@@ -69,37 +69,38 @@ class Scene {
 //		lightingShader.setViewPosition(position)
 //	}
 	
-	func drawPoints(vertices: Vertices, modelMatrix: Matrix, size: GLfloat) {
-		primitiveShader.drawPoints(vertices: vertices, modelMatrix: modelMatrix, size: size)
+	func drawPoints(vertices: Vertices, modelMatrix: Matrix, size: GLfloat, color: Color) {
+		primitiveShader.drawPoints(vertices: vertices, modelMatrix: modelMatrix, color: color, size: size)
 	}
 	
-	func drawPoints(model: Model, modelMatrix: Matrix, size: GLfloat) {
-		primitiveShader.drawPoints(model: model, modelMatrix: modelMatrix, size: size)
+	func drawPoints(model: Model, modelMatrix: Matrix, size: GLfloat, color: Color) {
+		primitiveShader.drawPoints(model: model, modelMatrix: modelMatrix, color: color, size: size)
 	}
 	
-	func drawLines(vertices: Vertices, modelMatrix: Matrix) {
-		primitiveShader.drawLines(vertices: vertices, modelMatrix: modelMatrix)
+	func drawLines(vertices: Vertices, modelMatrix: Matrix, color: Color) {
+		primitiveShader.drawLines(vertices: vertices, modelMatrix: modelMatrix, color: color)
 	}
 	
-	func drawLines(model: Model, modelMatrix: Matrix) {
-		primitiveShader.drawLines(model: model, modelMatrix: modelMatrix)
+	func drawLines(model: Model, modelMatrix: Matrix, color: Color) {
+		primitiveShader.drawLines(model: model, modelMatrix: modelMatrix, color: color)
 	}
 	
-	func draw(model: Model, modelMatrix: Matrix) {
-		lightingShader.draw(model: model, modelMatrix: modelMatrix)
+	func draw(model: Model, modelMatrix: Matrix, color: Color) {
+		lightingShader.draw(model: model, modelMatrix: modelMatrix, color: color)
 	}
 	
 	func drawAxes() {
 		let size: GLfloat = 25.0
+		let color: Color = (1.0, 1.0, 1.0)
 		
-		drawLines(vertices: [(-size, 0.0, 0.0), (size, 0.0, 0.0)], modelMatrix: Matrix())
-		drawLines(vertices: [(0.0, -size, 0.0), (0.0, size, 0.0)], modelMatrix: Matrix())
-		drawLines(vertices: [(0.0, 0.0, -size), (0.0, 0.0, size)], modelMatrix: Matrix())
+		drawLines(vertices: [(-size, 0.0, 0.0), (size, 0.0, 0.0)], modelMatrix: Matrix(), color: color)
+		drawLines(vertices: [(0.0, -size, 0.0), (0.0, size, 0.0)], modelMatrix: Matrix(), color: color)
+		drawLines(vertices: [(0.0, 0.0, -size), (0.0, 0.0, size)], modelMatrix: Matrix(), color: color)
 	}
 	
 	func drawLightPosition() {
 		if let lightPosition = self.lightPosition {
-			drawPoints(vertices: [lightPosition], modelMatrix: Matrix(), size: 10.0)
+			drawPoints(vertices: [lightPosition], modelMatrix: Matrix(), size: 10.0, color: (1.0, 1.0, 1.0))
 		}
 	}
 	

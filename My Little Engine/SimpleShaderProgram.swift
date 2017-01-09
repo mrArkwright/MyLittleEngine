@@ -8,13 +8,14 @@
 
 import OpenGL
 
-// TODO: Colors
 class SimpleShaderProgram: ShaderProgram {
 	
-	private func draw(vertices: Vertices, modelMatrix: Matrix, mode: GLenum) {
+	private func draw(vertices: Vertices, modelMatrix: Matrix, color: Color, mode: GLenum) {
 		glUseProgram(shaderProgram)
 		
 		glUniformMatrix4fv(modelUniform, 1, GLboolean(GL_FALSE), modelMatrix.values)
+		
+		glUniform3f(vertexColorUniform, color.red, color.green, color.blue)
 		
 		var vertexBufferObject: GLuint = GLuint()
 		glGenBuffers(1, &vertexBufferObject);
@@ -29,10 +30,12 @@ class SimpleShaderProgram: ShaderProgram {
 		glDeleteBuffers(1, &vertexBufferObject)
 	}
 	
-	private func draw(model: Model, modelMatrix: Matrix, mode: GLenum) {
+	private func draw(model: Model, modelMatrix: Matrix, color: Color, mode: GLenum) {
 		glUseProgram(shaderProgram)
 		
 		glUniformMatrix4fv(modelUniform, 1, GLboolean(GL_FALSE), modelMatrix.values)
+		
+		glUniform3f(vertexColorUniform, color.red, color.green, color.blue)
 		
 		glBindBuffer(GLenum(GL_ARRAY_BUFFER), model.vertexBufferObject);
 		glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), model.elementBufferObject);
@@ -43,22 +46,22 @@ class SimpleShaderProgram: ShaderProgram {
 		glDrawElements(mode, GLsizei(model.indices.count), GLenum(GL_UNSIGNED_INT), UnsafeRawPointer(bitPattern: 0))
 	}
 	
-	func drawPoints(vertices: Vertices, modelMatrix: Matrix, size: GLfloat) {
+	func drawPoints(vertices: Vertices, modelMatrix: Matrix, color: Color, size: GLfloat) {
 		glPointSize(size)
-		draw(vertices: vertices, modelMatrix: modelMatrix, mode: GLenum(GL_POINTS))
+		draw(vertices: vertices, modelMatrix: modelMatrix, color: color, mode: GLenum(GL_POINTS))
 	}
 	
-	func drawPoints(model: Model, modelMatrix: Matrix, size: GLfloat) {
+	func drawPoints(model: Model, modelMatrix: Matrix, color: Color, size: GLfloat) {
 		glPointSize(size)
-		draw(model: model, modelMatrix: modelMatrix, mode: GLenum(GL_POINTS))
+		draw(model: model, modelMatrix: modelMatrix, color: color, mode: GLenum(GL_POINTS))
 	}
 	
-	func drawLines(vertices: Vertices, modelMatrix: Matrix) {
-		draw(vertices: vertices, modelMatrix: modelMatrix, mode: GLenum(GL_LINES))
+	func drawLines(vertices: Vertices, modelMatrix: Matrix, color: Color) {
+		draw(vertices: vertices, modelMatrix: modelMatrix, color: color, mode: GLenum(GL_LINES))
 	}
 	
-	func drawLines(model: Model, modelMatrix: Matrix) {
-		draw(model: model, modelMatrix: modelMatrix, mode: GLenum(GL_LINES))
+	func drawLines(model: Model, modelMatrix: Matrix, color: Color) {
+		draw(model: model, modelMatrix: modelMatrix, color: color, mode: GLenum(GL_LINES))
 	}
 	
 }

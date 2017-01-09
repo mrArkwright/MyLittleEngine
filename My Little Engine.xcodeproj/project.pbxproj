@@ -21,6 +21,7 @@
 		80706C941E231208000EB6E5 /* EngineOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80706C931E231208000EB6E5 /* EngineOpenGLView.swift */; };
 		80706C961E231213000EB6E5 /* ExampleSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80706C951E231213000EB6E5 /* ExampleSceneView.swift */; };
 		80706C981E231228000EB6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80706C971E231228000EB6E5 /* AppDelegate.swift */; };
+		8071F9F51E23E75400D406AF /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071F9F41E23E75400D406AF /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		80706C931E231208000EB6E5 /* EngineOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineOpenGLView.swift; sourceTree = "<group>"; };
 		80706C951E231213000EB6E5 /* ExampleSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSceneView.swift; sourceTree = "<group>"; };
 		80706C971E231228000EB6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8071F9F41E23E75400D406AF /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +91,13 @@
 			isa = PBXGroup;
 			children = (
 				80706C851E231049000EB6E5 /* Scene.swift */,
-				80706C861E231049000EB6E5 /* Shader.swift */,
 				80706C841E231049000EB6E5 /* SimpleShaderProgram.swift */,
 				80706C811E231049000EB6E5 /* LightingShaderProgram.swift */,
 				80706C871E231049000EB6E5 /* ShaderProgram.swift */,
+				80706C861E231049000EB6E5 /* Shader.swift */,
 				80706C821E231049000EB6E5 /* Matrix.swift */,
 				80706C831E231049000EB6E5 /* Model.swift */,
+				8071F9F41E23E75400D406AF /* Types.swift */,
 			);
 			path = "My Little Engine";
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				80706C8A1E231049000EB6E5 /* Model.swift in Sources */,
 				80706C961E231213000EB6E5 /* ExampleSceneView.swift in Sources */,
 				80706C981E231228000EB6E5 /* AppDelegate.swift in Sources */,
+				8071F9F51E23E75400D406AF /* Types.swift in Sources */,
 				80706C941E231208000EB6E5 /* EngineOpenGLView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

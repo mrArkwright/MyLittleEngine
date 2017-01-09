@@ -9,15 +9,16 @@
 #version 150
 
 uniform vec3 lightPosition;
-in vec3 viewPosition;
+uniform vec3 vertexColor;
 
+
+//in vec3 viewPosition;
 in vec3 Normal;
 in vec3 FragmentPosition;
 
 out vec4 color;
 
 void main(void) {
-	vec3 vertexColor = vec3(1.0, 0.5, 0.31);
 	
 	float ambientStrength = 0.5;
 	vec3 lightColor = vec3(1.0, 1.0, 1.0);

@@ -15,6 +15,7 @@ class ShaderProgram {
 	let modelUniform: GLint
 	let viewUniform: GLint
 	let projectionUniform: GLint
+	let vertexColorUniform: GLint
 	
 	let positionAttribute: GLuint
 	
@@ -40,6 +41,7 @@ class ShaderProgram {
 		modelUniform = GLint(glGetUniformLocation(shaderProgram, "model"))
 		viewUniform = GLint(glGetUniformLocation(shaderProgram, "view"))
 		projectionUniform = GLint(glGetUniformLocation(shaderProgram, "projection"))
+		vertexColorUniform = GLint(glGetUniformLocation(shaderProgram, "vertexColor"))
 		
 		positionAttribute = GLuint(glGetAttribLocation(shaderProgram, "position"))
 	}

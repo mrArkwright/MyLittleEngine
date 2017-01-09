@@ -70,14 +70,14 @@ class ExampleSceneView: EngineOpenGLView {
 		modelMatrix.rotateX(angle: time*0.16)
 		modelMatrix.rotateY(angle: time*0.8 + 2.0 * GLfloat.pi / 16)
 		modelMatrix.translate(x: -5.0, y: 0.0, z: 0.0)
-		scene.draw(model: cube, modelMatrix: modelMatrix)
+		scene.draw(model: cube, modelMatrix: modelMatrix, color: (1.0, 0.5, 0.31))
 		
 		modelMatrix = Matrix()
 		modelMatrix.scale(factor: 2.5)
 		modelMatrix.rotateX(angle: time*0.16)
 		modelMatrix.rotateY(angle: -time*0.8 + 2.0 * GLfloat.pi / 16)
 		modelMatrix.translate(x: 5.0, y: 0.0, z: 0.0)
-		scene.draw(model: cube, modelMatrix: modelMatrix)
+		scene.draw(model: cube, modelMatrix: modelMatrix, color: (0.3, 0.3, 0.3))
 		
 //		modelMatrix = Matrix()
 //		modelMatrix.scale(factor: 0.5)
@@ -111,7 +111,7 @@ class ExampleSceneView: EngineOpenGLView {
 		modelMatrix.scale(factor: 2.5)
 		modelMatrix.rotateY(angle: -0.559596121)
 		modelMatrix.rotateX(angle: 0.394672483)
-		scene.draw(model: cube, modelMatrix: modelMatrix)
+		scene.draw(model: cube, modelMatrix: modelMatrix, color: (1.0, 0.5, 0.31))
 	}
 	
 	override func mouseDragged(with event: NSEvent) {

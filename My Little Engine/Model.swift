@@ -8,13 +8,6 @@
 
 import OpenGL
 
-typealias Vertex = (GLfloat, GLfloat, GLfloat)
-typealias Normal = (GLfloat, GLfloat, GLfloat)
-typealias Vertices = [Vertex]
-typealias NVertices = [(Vertex, Normal)]
-typealias Index = GLuint
-typealias Indices = [Index]
-
 class Model {
 	
 	let vertices: NVertices

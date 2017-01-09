@@ -36,11 +36,13 @@ class LightingShaderProgram: ShaderProgram {
 //		glUniform3f(viewPositionUniform, position.0, position.1, position.2)
 //	}
 	
-	func draw(model: Model, modelMatrix: Matrix) {
+	func draw(model: Model, modelMatrix: Matrix, color: Color) {
 		
 		glUseProgram(shaderProgram)
 		
 		glUniformMatrix4fv(modelUniform, 1, GLboolean(GL_FALSE), modelMatrix.values)
+		
+		glUniform3f(vertexColorUniform, color.red, color.green, color.blue)
 		
 		glBindBuffer(GLenum(GL_ARRAY_BUFFER), model.vertexBufferObject);
 		glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), model.elementBufferObject);
