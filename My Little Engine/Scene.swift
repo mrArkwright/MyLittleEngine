@@ -55,18 +55,29 @@ class Scene {
 		lightingShader.setProjectionMatrix(projectionMatrix)
 	}
 	
-	func setViewMatrix(_ viewMatrix: Matrix) {
+	private func setViewMatrix(_ viewMatrix: Matrix) {
 		primitiveShader.setViewMatrix(viewMatrix)
 		lightingShader.setViewMatrix(viewMatrix)
+	}
+	
+	private func setViewPosition(_ position: Vertex) {
+		lightingShader.setViewPosition(position)
+	}
+	
+	func setCamera(withRadius radius: GLfloat, azimuthAngle: GLfloat, elevationAngle: GLfloat) {
+		
+		let viewMatrix = Matrix()
+		viewMatrix.rotateY(angle: azimuthAngle)
+		viewMatrix.rotateX(angle: elevationAngle)
+		viewMatrix.translate(x: 0.0, y: 0.0, z: -radius)
+		self.setViewMatrix(viewMatrix)
+		
+		self.setViewPosition((-radius*sin(azimuthAngle)*cos(elevationAngle), radius*sin(elevationAngle), radius*cos(azimuthAngle)*cos(elevationAngle)))
 	}
 	
 	func setLightPosition(_ position: Vertex) {
 		lightingShader.setLightPosition(position)
 		lightPosition = position
-	}
-	
-	func setViewPosition(_ position: Vertex) {
-		lightingShader.setViewPosition(position)
 	}
 	
 	func drawPoints(vertices: Vertices, modelMatrix: Matrix, size: GLfloat, color: Color) {

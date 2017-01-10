@@ -11,9 +11,9 @@ import GLKit
 
 class ExampleSceneView: EngineOpenGLView {
 	
-	var zoom: GLfloat = -10.0
-	var rotationX: GLfloat = 0.0
-	var rotationY: GLfloat = 0.0
+	var radius: GLfloat = 10.0
+	var azimuthAngle: GLfloat = 0.0
+	var elevationAngle: GLfloat = 0.0
 	
 	var cube: Model!
 	var teapot: Model!
@@ -49,15 +49,8 @@ class ExampleSceneView: EngineOpenGLView {
 		let projectionMatrix = Matrix(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
 		scene.setProjectionMatrix(projectionMatrix)
 		
-		// ---------------- view ----------------
-		let viewMatrix = Matrix()
-		viewMatrix.rotateY(angle: rotationY)
-		viewMatrix.rotateX(angle: rotationX)
-		viewMatrix.translate(x: 0.0, y: 0.0, z: zoom)
-		scene.setViewMatrix(viewMatrix)
-		scene.setViewPosition((zoom*sin(rotationY)*cos(rotationX), -zoom*sin(rotationX), -zoom*cos(rotationY)*cos(rotationX)))
-		
-		//Swift.print(viewMatrix)
+		// ---------------- camera ----------------
+		scene.setCamera(withRadius: radius, azimuthAngle: azimuthAngle, elevationAngle: elevationAngle)
 		
 		// ---------------- lighting ----------------
 		//scene.setLightPosition((10.0*sin(time*0.4), 5.0, 10.0*cos(time*0.4)))
@@ -78,7 +71,7 @@ class ExampleSceneView: EngineOpenGLView {
 		modelMatrix.rotateX(angle: time*0.16)
 		modelMatrix.rotateY(angle: -time*0.8 + 2.0 * GLfloat.pi / 16)
 		modelMatrix.translate(x: 5.0, y: 0.0, z: 0.0)
-		scene.draw(model: sphere, modelMatrix: modelMatrix, color: (0.3, 0.3, 0.3))
+		scene.draw(model: cube, modelMatrix: modelMatrix, color: (0.3, 0.3, 0.3))
 		
 		modelMatrix = Matrix()
 		modelMatrix.scale(factor: 0.5)
@@ -98,10 +91,7 @@ class ExampleSceneView: EngineOpenGLView {
 		scene.setProjectionMatrix(projectionMatrix)
 		
 		// ---------------- view ----------------
-		let viewMatrix = Matrix()
-		viewMatrix.translate(x: 0.0, y: 0.0, z: -5.0)
-		scene.setViewMatrix(viewMatrix)
-		scene.setViewPosition((0.0, 0.0, 5.0))
+		scene.setCamera(withRadius: 5.0, azimuthAngle: 0.0, elevationAngle: 0.0)
 		
 		// ---------------- lighting ----------------
 		scene.setLightPosition((5.0, 5.0, 5.0))
@@ -120,12 +110,12 @@ class ExampleSceneView: EngineOpenGLView {
 		let screenWidth = GLfloat(self.window!.screen!.visibleFrame.size.width)
 		let screenHeight = GLfloat(self.window!.screen!.visibleFrame.size.height)
 		
-		rotationX += 2.0 * GLfloat.pi * GLfloat(event.deltaY) / screenHeight * 2.0
-		rotationY += 2.0 * GLfloat.pi * GLfloat(event.deltaX) / screenWidth * 2.0
+		elevationAngle += 2.0 * GLfloat.pi * GLfloat(event.deltaY) / screenHeight * 2.0
+		azimuthAngle += 2.0 * GLfloat.pi * GLfloat(event.deltaX) / screenWidth * 2.0
 	}
 	
 	override func magnify(with event: NSEvent) {
-		zoom = min(zoom + GLfloat(event.magnification) * 25.0, -5.0)
+		radius = max(radius - GLfloat(event.magnification) * 25.0, 5.0)
 	}
 	
 }
