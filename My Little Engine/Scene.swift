@@ -50,7 +50,8 @@ class Scene {
 		glClear(GLenum(GL_COLOR_BUFFER_BIT) | GLenum(GL_DEPTH_BUFFER_BIT))
 	}
 	
-	func setProjectionMatrix(_ projectionMatrix: Matrix) {
+	func setProjection(withPerspectiveFovy fovy: GLfloat, aspect: GLfloat, zNear: GLfloat, zFar: GLfloat) {
+		let projectionMatrix = Matrix(withPerspectiveFovy: fovy, aspect: aspect, zNear: zNear, zFar: zFar)
 		primitiveShader.setProjectionMatrix(projectionMatrix)
 		lightingShader.setProjectionMatrix(projectionMatrix)
 	}

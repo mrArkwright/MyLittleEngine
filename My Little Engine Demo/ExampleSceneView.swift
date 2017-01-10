@@ -46,8 +46,7 @@ class ExampleSceneView: EngineOpenGLView {
 		let viewHeight = GLfloat(self.frame.size.height)
 		
 		// ---------------- projection ----------------
-		let projectionMatrix = Matrix(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
-		scene.setProjectionMatrix(projectionMatrix)
+		scene.setProjection(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
 		
 		// ---------------- camera ----------------
 		scene.setCamera(withRadius: radius, azimuthAngle: azimuthAngle, elevationAngle: elevationAngle)
@@ -87,8 +86,7 @@ class ExampleSceneView: EngineOpenGLView {
 		scene.setClearColor(color: (0.0, 0.0, 0.0), alpha: 0.0)
 		
 		// ---------------- projection ----------------
-		let projectionMatrix = Matrix(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
-		scene.setProjectionMatrix(projectionMatrix)
+		scene.setProjection(withPerspectiveFovy: 45.0, aspect: viewWidth/viewHeight, zNear: 0.1, zFar: 100.0)
 		
 		// ---------------- view ----------------
 		scene.setCamera(withRadius: 5.0, azimuthAngle: 0.0, elevationAngle: 0.0)
